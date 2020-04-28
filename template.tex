@@ -1,0 +1,106 @@
+\usepackage{okumacro} % jsclassesに同梱のパッケージ いろんなマクロがある
+% 和文の仮想ボディがアレ
+\usepackage{otf}
+% 欧文フォントのサイズ指定がアレ
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+% 用紙サイズの扱いがアレ
+\usepackage{bxpapersize}
+% 空白文字を含む画像を読み込めるようにする
+\usepackage{grffile}
+% 余白設定
+\usepackage[top=20mm, bottom=25mm, left=20mm, right=20mm]{geometry}
+
+\usepackage[dvipdfmx]{hyperref} % ハイパーリンクつき文章にする
+\usepackage{pxjahyper}
+\usepackage{xcolor}
+\hypersetup{
+    colorlinks=false,
+    citebordercolor=green,
+    linkbordercolor=red,
+    urlbordercolor=cyan,
+}
+
+\usepackage[dvipdfmx]{graphicx} %画像読み込み
+\usepackage[dvipdfmx]{color} %png画像が表示されないとき
+\usepackage{amsmath} %数式
+\usepackage{bm} % 太字、ベクトル
+\usepackage{textcomp} % 特殊文字
+\usepackage{siunitx} % SI単位系
+\usepackage{paralist} % 改行しない箇条書きを可能にする 
+\usepackage{url} %url
+\usepackage{multirow} %表 縦結合
+\usepackage{multicol}
+\usepackage{subfigure} %副番号
+\usepackage{fancyhdr} %ヘッダ フッタ
+\usepackage{float}
+\usepackage{tikz}
+\usepackage[RPvoltages]{circuitikz}
+\usepackage{cases}
+
+\usepackage{here} %画像配置
+    \pagestyle{fancy}
+    \lhead{}
+    \chead{}
+    \rhead{\thepage}
+    \lfoot{}
+    \cfoot{}
+    \rfoot{}
+    \renewcommand{\headrulewidth}{0pt}
+\usepackage{listings,jlisting} %日本語のコメントアウトをする場合jlistingが必要
+\usepackage{txfonts}
+
+% solarized
+\definecolor{base}{gray}{0} %black
+\definecolor{comment}{rgb}{0.52,0.60,0.00} %green
+\definecolor{string}{rgb}{0.83,0.21,0.51} %magenta
+\definecolor{keyword1}{rgb}{0.15,0.55,0.82} %blue
+\definecolor{keyword2}{rgb}{0.80,0.29,0.09} %orange
+\definecolor{keyword3}{rgb}{0.71,0.54,0.00} %yellow
+\definecolor{keyword4}{rgb}{0.42,0.44,0.77} %violet[f:id:e8l:20151129232557p:plain][f:id:e8l:20151129232557p:plain][f:id:e8l:20151129232557p:plain]
+
+\lstset
+{
+    basicstyle={\ttfamily\color{base}\scriptsize},%コードの基本書式
+    keywordstyle=[1]{\color{keyword1}\textbf},%キーワード1のスタイル
+    keywordstyle=[2]{\color{keyword2}\textbf},%キーワード2のスタイル
+    keywordstyle=[3]{\color{keyword3}\textbf},%キーワード3のスタイル
+    keywordstyle=[4]{\color{keyword4}\textbf},%キーワード4のスタイル
+    commentstyle={\gtfamily\scriptsize\color{comment}},%コメントのスタイル
+    stringstyle={\gtfamily\scriptsize\color{string}},%文字列のスタイル
+    numbers=left,%行番号は左
+    stepnumber=1,%一行ずつ行番号をふる
+    numberstyle={\sffamily\scriptsize},%行番号の書式
+    xleftmargin=0zw, %左余白
+    xrightmargin=0zw,%右余白
+    tabsize=4,%タブの空白数
+    % frame=single,フレームの書式
+    frame={tb},
+    % frameround=tttt,角を丸めるかどうか tで丸める
+    breaklines=true,%長くなったら途中で改行
+    captionpos=t,%タイトルの位置
+    breakindent=10pt,%改行されたときの送り幅
+    showstringspaces=false,%文字列中の半角スペースを表示させない
+    lineskip=-1pt%通常の文章より行送りを狭くする
+}
+
+% mktitleを調整
+\usepackage{mdframed}
+\makeatletter
+\newcommand{\subtitle}[1]{\def\@subtitle{#1}}
+\newcommand{\institute}[1]{\def\@institute{#1}}
+\renewcommand{\maketitle}{
+  \begin{mdframed}[roundcorner=10pt]
+    {\small \@date}
+    \vspace{-2.5ex}
+    \begin{center}
+      \textgt{\@subtitle}\\[0.25ex]
+      {\Large \textgt{\@title}}
+    \end{center}
+    \vspace{-3.5ex}
+    \begin{flushright}
+      \@institute \hspace{0.5em} \@author
+    \end{flushright}
+  \end{mdframed}
+}
+\makeatother
