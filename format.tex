@@ -1,0 +1,46 @@
+\documentclass[uplatex,dvipdfmx,11pt,a4paper]{jsarticle} %11pt A4用紙出力
+
+\input{/home/hiroya/Documents/Latex/kit/template}
+
+% http://konoyonohana.blog.fc2.com/blog-entry-311.html
+\usepackage{problem}
+
+\bibliographystyle{jIEEEtran}
+
+\title{第N回演習課題}
+\subtitle{科目名}
+\author{Qiita学科 著者}
+\institute{学籍番号:12345678}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{problem}
+    C言語で「Hello World!」と表示するプログラムを作成せよ。
+\end{problem}
+
+作成したプログラムをソースコード\ref{sc:helloworld}に記載する。
+
+% \lstinputlisting[language=c, caption=Hello Worldを表示するプログラム, label=sc:helloworld]{src/main.c}
+
+\begin{lstlisting}[language=c, caption=Hello Worldを表示するプログラム, label=sc:helloworld]
+#include <stdio.h>
+
+int main(){
+    // コメントもいい感じ
+    printf("Hello World!");
+    return 0;
+}
+\end{lstlisting}
+
+articleタイプの参考文献はこの様な感じに表示できる\cite{jpArticle3,enArticle3}。
+他にも、bookタイプはこのようになる\cite{jpBook1}。
+Webページの場合は、URLを記載したり、参照日をつけたりできるようにしておくと良い\cite{example}。
+
+\addcontentsline{toc}{section}{参考文献}
+\bibliography{reference.bib}
+\end{document}
+% とりあえず
+% http://shirotakeda.org/blog-ja/?p=3109
+\kcatcode`ç=15% not cjk character

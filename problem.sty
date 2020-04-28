@@ -1,0 +1,58 @@
+\NeedsTeXFormat{pLaTeX2e}
+\ProvidesPackage{problem}
+              [1997/08/25 v1.0 defines problem and answer environments]
+\newcounter{problem@number}
+\setcounter{problem@number}{0}
+\newbox\temp@probbox
+\long\def\problem@frame{%
+	\vskip.5\baselineskip
+	\vbox{
+	\hrule
+	\hbox to \linewidth{%
+		\vrule
+		\hfill
+		\vbox{%
+			\vskip.5\baselineskip
+			\box\temp@probbox
+			\par
+			\vskip.5\baselineskip
+		}
+		\hfill
+		\vrule
+	}
+	\hrule
+	}
+}
+\newcommand{\problem}[1][@]{%
+	\par
+	\if @#1
+		\refstepcounter{problem@number}%
+	\else
+		\setcounter{problem@number}{#1}%
+		\addtocounter{problem@number}{-1}%
+		\refstepcounter{problem@number}%
+	\fi
+	\dimen0=\linewidth
+	\advance\dimen0 by -2zw
+	\setbox\temp@probbox=\hbox\bgroup\begin{minipage}{\dimen0}%
+	\textbf{問題\theproblem@number \hskip1zw}%
+}
+\def\endproblem{%
+\end{minipage}\egroup
+\problem@frame
+}
+
+\def\answer{%
+	\bgroup\parindent\z@
+	\par
+	\fbox{\textbf{解答}}%
+
+	}
+\def\endanswer{\egroup}
+
+\renewcommand{\theenumi}{\arabic{enumi}}
+\renewcommand{\labelenumi}{ (\theenumi) }
+\renewcommand{\theenumii}{\Roman{enumii}}
+\renewcommand{\labelenumii}{ (\theenumii) }
+\renewcommand{\theenumiii}{\roman{enumiii}}
+\renewcommand{\labelenumiii}{ (\theenumiii) }
